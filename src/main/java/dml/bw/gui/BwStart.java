@@ -378,7 +378,7 @@ public class BwStart {
         }
 
         System.out.println("Reszta: " + list.toString());
-        // przyklad od Manka - jak dostac sie do 2 elementu
+
 		/*
 		 * for (Iterator<String> iterator = list.iterator();
 		 * iterator.hasNext();) { String element1 = iterator.next();
