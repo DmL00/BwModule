@@ -5,18 +5,19 @@ import java.util.List;
 
 public class MainAlg {
 
-    void process(List<ItemQuality> itemQuality) {
-        Sorter sorter = new Sorter();
-        sorter.sort(itemQuality);
-        Deleter deleter = new Deleter();
-        Marker marker = new Marker();
-        for (int i = 0; i < itemQuality.size(); i++) {
-            ItemQuality tnLhs = itemQuality.get(i);
-            for (int j = i + 1; j < itemQuality.size(); j++) {
-                ItemQuality tnRhs = itemQuality.get(j);
+    private final Sorter sorter = new Sorter();
+    private final Deleter deleter = new Deleter();
+    private final Marker marker = new Marker();
+
+    public void process(List<ItemQuality> itemQualities) {
+        sorter.sort(itemQualities);
+        for (int i = 0; i < itemQualities.size(); i++) {
+            ItemQuality tnLhs = itemQualities.get(i);
+            for (int j = i + 1; j < itemQualities.size(); j++) {
+                ItemQuality tnRhs = itemQualities.get(j);
                 marker.process(tnLhs, tnRhs);
             }
-            deleter.deleteMarkedItems(itemQuality);
+            deleter.deleteMa​rkedItems(itemQualities);
         }
 
         // i jak wyjdzie z tej petli to powininien wszytskie znalesc i

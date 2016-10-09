@@ -2,12 +2,12 @@ package dml.bw.core;
 
 import java.util.List;
 
-public class ItemQuality {
-    int prefix;
-    int base;
-    int suffix;
-    String name;
-    boolean markedToDelete;
+public class ItemQuality implements Comparable<ItemQuality>{
+    private final int prefix;
+    private final int base;
+    private final int suffix;
+    private final String name;
+    private boolean markedToDelete;
 
     public ItemQuality(int prefix, int base, int suffix, String name,
                        boolean markedToDelete) {
@@ -19,43 +19,27 @@ public class ItemQuality {
     }
 
     public int getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(int prefix) {
-        this.prefix = prefix;
+        return this.prefix;
     }
 
     public int getBase() {
-        return base;
-    }
-
-    public void setBase(int base) {
-        this.base = base;
+        return this.base;
     }
 
     public int getSuffix() {
-        return suffix;
+        return this.suffix;
     }
 
-    public void setSuffix(int suffix) {
-        this.suffix = suffix;
+    public String getName() {
+        return this.name;
     }
 
     public boolean isMarkedToDelete() {
-        return markedToDelete;
+        return this.markedToDelete;
     }
 
     public void setMarkedToDelete(boolean markedToDelete) {
         this.markedToDelete = markedToDelete;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
@@ -65,11 +49,17 @@ public class ItemQuality {
                 + markedToDelete + "]";
     }
 
+    @Override
+    public int compareTo(ItemQuality itemQuality) {
+        int  thisAffixValue = this.getPrefix()+ this.getSuffix();
+        int affixValue = itemQuality.getPrefix()+ itemQuality.getSuffix();
+        if (thisAffixValue > affixValue){
+            return 1;
+        } else    if (thisAffixValue < affixValue){
+            return -1;
+        }
 
-
-
-
-
-
+        return 0;
+    }
 
 }
